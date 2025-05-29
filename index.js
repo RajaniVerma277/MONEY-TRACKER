@@ -29,13 +29,14 @@ app.post("/add",(req,res) =>{
     }
     db.collection('users').insertOne(data,(err,collection)=>{
         if(err){
-            throw err;
+            res.status(500).send("Error saving data");
         }
-        console.log("Record inserted successfully")
+        console.log("Record inserted successfully");
+        return res.redirect("/");
 
-    })
+    });
             
-})
+});
 
 app.get("/",(req,res)=>{
     res.set({
